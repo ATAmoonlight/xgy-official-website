@@ -1,0 +1,46 @@
+.footer {
+  padding: 48px 24px;
+  background: var(--color-primary-dark);
+  color: rgba(248, 250, 252, 0.85);
+  scroll-margin-top: var(--nav-height);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.companyName {
+  color: var(--color-text-inverse);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: rgba(248, 250, 252, 0.65);
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: rgba(248, 250, 252, 0.55);
+}
+
+@media (max-width: 560px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
