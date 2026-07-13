@@ -21,6 +21,14 @@
   gap: 8px;
 }
 
+.logoImage {
+  width: auto;
+  height: 46px;
+  object-fit: contain;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
 .companyName {
   color: var(--color-text-inverse);
   font-size: 1.0625rem;

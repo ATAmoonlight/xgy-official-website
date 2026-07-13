@@ -2,9 +2,9 @@ import styles from "./CoreAdvantages.module.css";
 
 const ADVANTAGES = [
   {
-    title: "Professional Team",
+    title: "专注研发",
     description:
-      "Experienced engineers and production specialists dedicated to delivering excellence at every stage of the manufacturing process.",
+      "长期专注电子元器件自动化设备领域，围绕电子制造行业生产需求，持续优化设备结构与自动化技术。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
@@ -14,9 +14,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "Advanced Manufacturing",
+    title: "丰富产品",
     description:
-      "State-of-the-art production lines and automated processes ensure consistent output, high throughput, and precision assembly.",
+      "产品覆盖自动成型、自动组装、自动焊接、自动穿管及非标自动化设备，满足不同生产环节的自动化需求。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -26,9 +26,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "Strict Quality Control",
+    title: "非标定制",
     description:
-      "Multi-stage inspection and testing protocols guarantee that every product meets international quality and safety standards.",
+      "可根据客户产品特点、生产工艺及自动化需求，提供非标自动化设备研发及制造服务。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,9 +37,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "Fast Delivery",
+    title: "品质保障",
     description:
-      "Optimized supply chain management and flexible production scheduling enable rapid turnaround without compromising quality.",
+      "坚持严格质量管理，从产品设计、设备装配到整机调试，保障设备稳定可靠并支持连续生产。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <rect x="1" y="3" width="15" height="13" rx="2" />
@@ -54,20 +54,18 @@ const ADVANTAGES = [
 export default function CoreAdvantages() {
   return (
     <section
-      id="products"
+      id="manufacturing"
       className={styles.section}
       aria-labelledby="advantages-title"
     >
       <div className={styles.inner}>
         <header className={styles.header}>
-          <span className={styles.label}>Core Advantages</span>
-          <span id="manufacturing" className={styles.anchor} aria-hidden="true" />
+          <span className={styles.label}>产品与优势</span>
           <h2 id="advantages-title" className={styles.title}>
-            Why Choose XGY
+            覆盖电子元器件自动化生产多个环节
           </h2>
           <p className={styles.description}>
-            We combine technical expertise with modern manufacturing capabilities
-            to deliver electronic equipment you can depend on.
+            新光扬产品涵盖自动散装元件成型机、三极管成型机、MOS 管成型机、IGBT 成型机、保险丝自动加工设备、自动组装焊接设备以及非标自动化设备，为客户提供稳定、高效、智能的自动化生产解决方案。
           </p>
         </header>
 

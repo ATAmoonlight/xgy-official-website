@@ -8,9 +8,19 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "XGY | Xinguangyang Electronic Equipment Co., Ltd.",
+  title: "新光扬电子设备有限公司｜电子元器件自动化设备制造商",
   description:
-    "Professional electronic equipment manufacturer offering reliable quality, precision manufacturing, and innovative solutions.",
+    "新光扬电子设备有限公司专注于电子元器件自动化设备研发与制造，产品涵盖元件成型设备、自动组装设备、自动焊接设备及非标自动化设备，为全球客户提供智能制造解决方案。",
+  keywords: [
+    "电子自动化设备",
+    "元件成型机",
+    "IGBT成型机",
+    "MOS成型机",
+    "自动焊接设备",
+    "自动组装设备",
+    "非标自动化设备",
+    "新光扬",
+  ],
 };
 
 export default function RootLayout({
@@ -19,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} antialiased`}>
+    <html lang="zh-CN" className={`${geistSans.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import styles from "./Navbar.module.css";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Manufacturing", href: "#manufacturing" },
-  { label: "Contact", href: "#contact" },
+  { label: "首页", href: "#home" },
+  { label: "关于新光扬", href: "#about" },
+  { label: "产品中心", href: "#products" },
+  { label: "制造能力", href: "#manufacturing" },
+  { label: "联系我们", href: "#contact" },
 ] as const;
 
 export default function Navbar() {
@@ -22,14 +23,20 @@ export default function Navbar() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <a href="#home" className={styles.logo} onClick={closeMenu}>
-          <span className={styles.logoMark}>XGY</span>
-          XGY
+          <Image
+            src="/logo/logo.png"
+            alt="新光扬电子设备有限公司"
+            width={177}
+            height={100}
+            className={styles.logoImage}
+            priority
+          />
         </a>
 
         <button
           type="button"
           className={`${styles.menuToggle} ${menuOpen ? styles.menuToggleOpen : ""}`}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? "关闭导航菜单" : "打开导航菜单"}
           aria-expanded={menuOpen}
           aria-controls="main-navigation"
           onClick={() => setMenuOpen((open) => !open)}
@@ -42,7 +49,7 @@ export default function Navbar() {
         <nav
           id="main-navigation"
           className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}
-          aria-label="Main navigation"
+          aria-label="主导航"
         >
           {NAV_ITEMS.map((item) => (
             <a
