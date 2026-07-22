@@ -1,9 +1,25 @@
-import Image from "next/image";
 import Link from "next/link";
-import { featuredProducts } from "@/data/products";
+import ProductCard from "@/components/products/ProductCard";
+import { getProductCatalog } from "@/lib/product-markdown";
 import styles from "./ProductShowcase.module.css";
 
-export default function ProductShowcase() {
+const FEATURED_PRODUCT_SLUGS = [
+  "ns-317",
+  "ns-800b",
+  "ns-806a",
+  "ns-810",
+  "ns-830",
+  "ns-850",
+  "ns-860",
+  "ns-865",
+] as const;
+
+export default async function ProductShowcase() {
+  const catalog = await getProductCatalog();
+  const featuredProducts = FEATURED_PRODUCT_SLUGS.map((slug) =>
+    catalog.products.find((product) => product.slug === slug),
+  ).filter((product) => product !== undefined);
+
   return (
     <section
       id="products"
@@ -17,36 +33,30 @@ export default function ProductShowcase() {
             代表设备展示
           </h2>
           <p className={styles.description}>
-            以下产品均来自新光扬现有产品资料与项目真实图片，覆盖电子元件成型设备、自动组装设备及保险丝加工设备等核心产品方向。
+            覆盖元器件成型、剪脚、穿管、组装、焊接及生产辅助设备等多个产品方向。
           </p>
         </header>
 
         <div className={styles.grid}>
           {featuredProducts.map((product) => (
-            <Link
+            <ProductCard
               key={product.slug}
-              href={`/products/${product.slug}`}
-              className={styles.card}
-              aria-label={`查看${product.model} ${product.name}详情`}
-            >
-              <div className={styles.imageWrap}>
-                <Image
-                  src={product.image}
-                  alt={`${product.model} ${product.name}`}
-                  width={560}
-                  height={420}
-                  className={styles.image}
-                  sizes="(max-width: 560px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <div className={styles.cardBody}>
-                <span className={styles.category}>{product.category}</span>
-                <h3 className={styles.model}>{product.model}</h3>
-                <p className={styles.name}>{product.name}</p>
-                <span className={styles.more}>查看产品详情</span>
-              </div>
-            </Link>
+              product={{
+                slug: product.slug,
+                model: product.model,
+                displayName: product.displayName,
+                category: product.category,
+                image: product.images.cover!,
+              }}
+            />
           ))}
+        </div>
+
+        <div className={styles.allProductsWrap}>
+          <Link href="/products" className={styles.allProductsLink}>
+            查看全部产品
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>

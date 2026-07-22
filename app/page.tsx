@@ -4,6 +4,7 @@ import Hero from "@/components/home/Hero";
 import CompanyIntro from "@/components/home/CompanyIntro";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import CoreAdvantages from "@/components/home/CoreAdvantages";
+import BusinessPhilosophy from "@/components/home/BusinessPhilosophy";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <CompanyIntro />
         <ProductShowcase />
         <CoreAdvantages />
+        <BusinessPhilosophy />
       </main>
       <Footer />
     </div>

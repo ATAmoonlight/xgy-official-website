@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import styles from "./Navbar.module.css";
 
 const NAV_ITEMS = [
-  { label: "首页", href: "#home" },
-  { label: "关于新光扬", href: "#about" },
-  { label: "产品中心", href: "#products" },
-  { label: "制造能力", href: "#manufacturing" },
-  { label: "联系我们", href: "#contact" },
+  { label: "首页", href: "/" },
+  { label: "关于新光扬", href: "/#about" },
+  { label: "产品中心", href: "/products" },
+  { label: "制造能力", href: "/#manufacturing" },
+  { label: "联系我们", href: "/#contact" },
 ] as const;
 
 export default function Navbar() {
@@ -22,16 +23,16 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <a href="#home" className={styles.logo} onClick={closeMenu}>
+        <Link href="/" className={styles.logo} onClick={closeMenu}>
           <Image
             src="/logo/logo.png"
-            alt="新光扬电子设备有限公司"
-            width={177}
+            alt="新光扬电子设备有限公司企业标志"
+            width={200}
             height={100}
             className={styles.logoImage}
             priority
           />
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -52,14 +53,14 @@ export default function Navbar() {
           aria-label="主导航"
         >
           {NAV_ITEMS.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className={styles.navLink}
               onClick={closeMenu}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

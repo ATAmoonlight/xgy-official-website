@@ -1,0 +1,48 @@
+.breadcrumb {
+  width: 100%;
+  margin-bottom: 34px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  list-style: none;
+}
+
+.list a {
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.list a:hover,
+.list a:focus-visible {
+  color: var(--color-primary);
+}
+
+.separator {
+  color: #9aa5af;
+}
+
+.current {
+  max-width: min(480px, 44vw);
+  overflow: hidden;
+  color: var(--color-text);
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .breadcrumb {
+    margin-bottom: 26px;
+  }
+
+  .current {
+    max-width: 72vw;
+  }
+}

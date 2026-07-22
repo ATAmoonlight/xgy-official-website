@@ -1,0 +1,348 @@
+.inner {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 82px 24px 76px;
+  border-bottom: 1px solid var(--color-border);
+  background:
+    linear-gradient(110deg, rgba(10, 71, 118, 0.08), transparent 58%),
+    var(--color-bg-muted);
+}
+
+.eyebrow {
+  margin-bottom: 9px;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.pageTitle {
+  margin-bottom: 16px;
+  color: var(--color-text);
+  font-size: clamp(2.35rem, 5vw, 4.35rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.pageDescription {
+  max-width: 760px;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.categorySection,
+.productsSection {
+  padding: 88px 24px;
+}
+
+.categorySection {
+  background: #ffffff;
+}
+
+.productsSection {
+  background: var(--color-bg-muted);
+}
+
+.sectionHeading {
+  margin-bottom: 34px;
+}
+
+.sectionTitle {
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.categoryCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 126px;
+  gap: 14px;
+  align-items: stretch;
+  min-height: 196px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  color: var(--color-text);
+  text-align: left;
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.categoryCard:hover,
+.categoryCard:focus-visible,
+.categoryCardActive {
+  border-color: rgba(23, 121, 182, 0.55);
+  box-shadow: 0 8px 22px rgba(22, 37, 54, 0.08);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.categoryCardActive {
+  background: #f5faff;
+}
+
+.categoryContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 0 22px 22px;
+}
+
+.categoryName {
+  margin-bottom: 10px;
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.categoryDescription {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+.categoryCount {
+  margin-top: 14px;
+  color: var(--color-accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.categoryImageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 14px 12px 14px 0;
+  background: linear-gradient(90deg, transparent, #f6f8fa);
+}
+
+.categoryImage {
+  width: 100%;
+  height: 148px;
+  object-fit: contain;
+}
+
+.emptyCategoryImage {
+  color: #8a96a3;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.listHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 38px;
+  scroll-margin-top: calc(var(--nav-height) + 24px);
+}
+
+.resultCount {
+  margin-top: 9px;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.filterTabs {
+  display: flex;
+  max-width: 72%;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 3px 2px 8px;
+  scrollbar-width: thin;
+}
+
+.filterTab {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.filterTab:hover,
+.filterTab:focus-visible {
+  border-color: rgba(23, 121, 182, 0.5);
+  color: var(--color-primary);
+}
+
+.filterTabActive {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.filterTabActive:hover,
+.filterTabActive:focus-visible {
+  color: #ffffff;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.emptyResult {
+  padding: 48px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.loadMoreWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 42px;
+}
+
+.loadMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 180px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--color-primary);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus-visible {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.loadStatus {
+  margin-top: 10px;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1240px) {
+  .categoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .listHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .filterTabs {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero,
+  .categorySection,
+  .productsSection {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .hero {
+    padding-top: 54px;
+    padding-bottom: 52px;
+  }
+
+  .categorySection,
+  .productsSection {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .categoryGrid {
+    display: flex;
+    gap: 14px;
+    margin-right: -16px;
+    margin-left: -16px;
+    padding: 4px 16px 14px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .categoryCard {
+    flex: 0 0 290px;
+    grid-template-columns: minmax(0, 1fr) 100px;
+    min-height: 178px;
+    scroll-snap-align: start;
+  }
+
+  .categoryContent {
+    padding: 19px 0 19px 18px;
+  }
+
+  .categoryImage {
+    height: 126px;
+  }
+
+  .filterTabs {
+    width: calc(100% + 16px);
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .loadMoreButton {
+    width: 100%;
+  }
+}

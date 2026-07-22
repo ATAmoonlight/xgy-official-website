@@ -1,0 +1,133 @@
+.cardShell {
+  min-width: 0;
+  height: 100%;
+  scroll-margin-top: calc(var(--nav-height) + 36px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-card);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: rgba(23, 121, 182, 0.48);
+  box-shadow: 0 10px 26px rgba(22, 37, 54, 0.11);
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.imageWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 230px;
+  padding: 22px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+  background: #f8fafb;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.22s ease;
+}
+
+.card:hover .image,
+.card:focus-visible .image {
+  transform: scale(1.02);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 220px;
+  padding: 20px;
+}
+
+.category {
+  margin-bottom: 10px;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.model {
+  margin-bottom: 7px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+}
+
+.name {
+  display: -webkit-box;
+  flex: 1;
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 16px;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.arrow {
+  margin-left: 7px;
+  transition: transform 0.22s ease;
+}
+
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 1280px) {
+  .imageWrap {
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .imageWrap {
+    height: min(66vw, 310px);
+    min-height: 230px;
+    padding: 20px;
+  }
+
+  .body {
+    min-height: 208px;
+    padding: 20px;
+  }
+
+  .name {
+    -webkit-line-clamp: 3;
+  }
+}

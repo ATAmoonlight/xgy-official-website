@@ -2,9 +2,9 @@ import styles from "./CoreAdvantages.module.css";
 
 const ADVANTAGES = [
   {
-    title: "专注研发",
+    title: "专注自动化设备",
     description:
-      "长期专注电子元器件自动化设备领域，围绕电子制造行业生产需求，持续优化设备结构与自动化技术。",
+      "长期深耕电子元器件成型、剪脚、穿管及装配自动化领域。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
@@ -14,9 +14,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "丰富产品",
+    title: "标准设备与非标定制",
     description:
-      "产品覆盖自动成型、自动组装、自动焊接、自动穿管及非标自动化设备，满足不同生产环节的自动化需求。",
+      "根据客户产品和工艺需求提供标准设备及定制化解决方案。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <rect x="2" y="7" width="20" height="14" rx="2" />
@@ -26,9 +26,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "非标定制",
+    title: "品质制造",
     description:
-      "可根据客户产品特点、生产工艺及自动化需求，提供非标自动化设备研发及制造服务。",
+      "采用先进加工设备、优质原材料及知名品牌电器部件。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,9 +37,9 @@ const ADVANTAGES = [
     ),
   },
   {
-    title: "品质保障",
+    title: "完善服务",
     description:
-      "坚持严格质量管理，从产品设计、设备装配到整机调试，保障设备稳定可靠并支持连续生产。",
+      "提供从需求沟通、设备制造到交付及售后的完整服务支持。",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
         <rect x="1" y="3" width="15" height="13" rx="2" />
@@ -60,13 +60,10 @@ export default function CoreAdvantages() {
     >
       <div className={styles.inner}>
         <header className={styles.header}>
-          <span className={styles.label}>产品与优势</span>
+          <span className={styles.label}>制造能力</span>
           <h2 id="advantages-title" className={styles.title}>
-            覆盖电子元器件自动化生产多个环节
+            为什么选择新光扬
           </h2>
-          <p className={styles.description}>
-            新光扬产品涵盖自动散装元件成型机、三极管成型机、MOS 管成型机、IGBT 成型机、保险丝自动加工设备、自动组装焊接设备以及非标自动化设备，为客户提供稳定、高效、智能的自动化生产解决方案。
-          </p>
         </header>
 
         <div className={styles.grid}>

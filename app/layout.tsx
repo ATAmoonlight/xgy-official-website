@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "新光扬电子设备有限公司｜电子元器件自动化设备制造商",
+  title: "新光扬电子设备有限公司｜DIP元件自动化设备制造商",
   description:
-    "新光扬电子设备有限公司专注于电子元器件自动化设备研发与制造，产品涵盖元件成型设备、自动组装设备、自动焊接设备及非标自动化设备，为全球客户提供智能制造解决方案。",
+    "新光扬专注于电子元器件成型、剪脚、穿管、装配及非标自动化设备，为电子制造企业提供稳定、高效的智能制造解决方案。",
   keywords: [
     "电子自动化设备",
     "元件成型机",
@@ -29,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`${geistSans.variable} antialiased`}>
+    <html lang="zh-CN">
       <body>{children}</body>
     </html>
   );
