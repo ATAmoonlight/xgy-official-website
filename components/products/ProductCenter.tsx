@@ -14,6 +14,7 @@ import {
   getProductCenterPath,
   PRODUCT_BROWSING_STORAGE_KEYS,
 } from "@/lib/product-browsing";
+import { getProductImageStyle } from "@/lib/product-image-config";
 import ProductCard, { type ProductCardData } from "./ProductCard";
 import styles from "./ProductCenter.module.css";
 
@@ -258,6 +259,10 @@ export default function ProductCenter({
                         width={280}
                         height={210}
                         className={styles.categoryImage}
+                        style={getProductImageStyle(
+                          category.representative.model,
+                          "list",
+                        )}
                       />
                     ) : (
                       <span className={styles.emptyCategoryImage}>

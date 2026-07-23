@@ -5,11 +5,14 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import ProductBreadcrumb from "@/components/products/ProductBreadcrumb";
+import JsonLd from "@/components/seo/JsonLd";
+import { getProductImageStyle } from "@/lib/product-image-config";
 import {
   getAllProductSlugs,
   getProductCatalog,
   getProductPageData,
 } from "@/lib/product-markdown";
+import { getSiteUrl } from "@/lib/site-config";
 import styles from "./page.module.css";
 
 type ProductPageProps = {
@@ -42,9 +45,29 @@ export async function generateMetadata({
     };
   }
 
+  const siteUrl = getSiteUrl();
+  const description = product.features[0] ?? product.name;
+
   return {
     title: `${product.name}｜新光扬电子设备有限公司`,
-    description: product.name,
+    description,
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
+    openGraph: {
+      type: "website",
+      url: `/products/${product.slug}`,
+      title: `${product.name}｜新光扬电子设备有限公司`,
+      description,
+      images: product.images.cover
+        ? [
+            {
+              url: `${siteUrl}${product.images.cover}`,
+              alt: `${product.name}主图`,
+            },
+          ]
+        : undefined,
+    },
   };
 }
 
@@ -105,9 +128,36 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       : categoryProducts
           .filter((catalogProduct) => catalogProduct.slug !== product.slug)
           .slice(0, 3);
+  const siteUrl = getSiteUrl();
+  const productImages = [
+    product.images.cover,
+    ...product.images.details,
+    ...product.images.components,
+  ]
+    .filter((image): image is string => Boolean(image))
+    .map((image) => `${siteUrl}${image}`);
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    sku: product.model,
+    model: product.model,
+    category: product.category,
+    description: product.features[0] ?? product.name,
+    image: productImages,
+    brand: {
+      "@type": "Brand",
+      name: "新光扬",
+    },
+    manufacturer: {
+      "@id": `${siteUrl}/#organization`,
+    },
+    url: `${siteUrl}/products/${product.slug}`,
+  };
 
   return (
     <div className={styles.page}>
+      <JsonLd data={productJsonLd} />
       <Navbar />
       <main className={styles.main}>
         <section className={styles.hero} aria-labelledby="product-title">
@@ -127,6 +177,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     width={760}
                     height={570}
                     className={styles.productImage}
+                    style={getProductImageStyle(product.model, "detail")}
                     priority
                   />
                 ) : (
@@ -289,6 +340,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                           width={560}
                           height={420}
                           className={styles.relatedImage}
+                          style={getProductImageStyle(
+                            relatedProduct.model,
+                            "list",
+                          )}
                           sizes="(max-width: 700px) 76vw, (max-width: 1000px) 45vw, 30vw"
                         />
                       </div>

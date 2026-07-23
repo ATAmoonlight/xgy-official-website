@@ -6,6 +6,22 @@
   background: #ffffff;
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 1px 0 rgba(22, 37, 54, 0.02);
+  transition:
+    height 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.homeHeader {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom-color: rgba(15, 42, 67, 0.07);
+  box-shadow: 0 2px 12px rgba(15, 42, 67, 0.025);
+}
+
+.homeScrolled {
+  height: 76px;
+  border-bottom-color: rgba(15, 42, 67, 0.1);
+  box-shadow: 0 5px 20px rgba(15, 42, 67, 0.07);
 }
 
 .inner {
@@ -16,6 +32,13 @@
   height: 100%;
   margin: 0 auto;
   padding: 0 28px;
+}
+
+.homeInner {
+  width: 100%;
+  max-width: 1440px;
+  padding-right: clamp(40px, 3.5vw, 56px);
+  padding-left: clamp(40px, 3.5vw, 56px);
 }
 
 .logo {
@@ -30,52 +53,97 @@
   object-fit: contain;
 }
 
+.homeLogoImage {
+  height: 40px;
+  transition: height 0.24s ease;
+}
+
+.homeScrolled .homeLogoImage {
+  height: 38px;
+}
+
 .nav {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+.homeNav {
+  gap: clamp(28px, 2.8vw, 44px);
+}
+
 .navLink {
   position: relative;
   padding: 10px 12px;
+  color: var(--color-text);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-text);
   transition: color 0.2s ease;
+}
+
+.homeNav .navLink {
+  padding: 12px 0;
+  font-size: clamp(1rem, 1.08vw, 1.0625rem);
+  font-weight: 600;
 }
 
 .navLink::after {
   content: "";
   position: absolute;
-  right: 12px;
-  bottom: 4px;
-  left: 12px;
+  right: 18%;
+  bottom: 2px;
+  left: 18%;
   height: 2px;
   background: var(--color-accent);
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.24s ease;
 }
 
 .navLink:hover,
-.navLink:focus-visible {
+.navLink:focus-visible,
+.navLinkActive {
   color: var(--color-primary);
   outline: none;
 }
 
 .navLink:hover::after,
-.navLink:focus-visible::after {
+.navLink:focus-visible::after,
+.navLinkActive::after {
   transform: scaleX(1);
+}
+
+.homeNav .contactLink {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 6px;
+  background: var(--color-accent);
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.homeNav .contactLink::after {
+  display: none;
+}
+
+.homeNav .contactLink:hover,
+.homeNav .contactLink:focus-visible {
+  background: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .menuToggle {
   display: none;
+  width: 44px;
+  height: 44px;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
   padding: 8px;
   border-radius: var(--radius-sm);
   transition: background-color 0.2s ease;
@@ -89,8 +157,8 @@
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--color-text);
   border-radius: 1px;
+  background-color: var(--color-text);
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -106,6 +174,21 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
+@media (max-width: 1024px) {
+  .homeInner {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .homeNav {
+    gap: 24px;
+  }
+
+  .homeNav .navLink {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .menuToggle {
     display: flex;
@@ -114,33 +197,33 @@
   .nav {
     position: fixed;
     top: var(--nav-height);
-    left: 0;
     right: 0;
+    left: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     padding: 12px 16px 20px;
-    background: #ffffff;
     border-bottom: 1px solid var(--color-border);
+    background: #ffffff;
     box-shadow: var(--shadow-md);
-    transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transform: translateY(-8px);
     transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
   }
 
   .navOpen {
-    transform: translateY(0);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(0);
   }
 
   .navLink {
     padding: 14px 16px;
-    font-size: 1rem;
     border-bottom: 1px solid var(--color-border);
+    font-size: 1rem;
   }
 
   .navLink:last-child {
@@ -155,7 +238,38 @@
     padding: 0 20px;
   }
 
+  .homeInner {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
   .logoImage {
     height: 38px;
+  }
+
+  .homeLogoImage,
+  .homeScrolled .homeLogoImage {
+    height: 38px;
+  }
+
+  .homeScrolled {
+    height: var(--nav-height);
+  }
+
+  .homeNav {
+    gap: 0;
+  }
+
+  .homeNav .navLink {
+    padding: 15px 16px;
+    font-size: 1.0625rem;
+  }
+
+  .homeNav .contactLink {
+    min-height: 44px;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0 16px;
+    border-bottom: 0;
   }
 }

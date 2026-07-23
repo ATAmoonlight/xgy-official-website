@@ -7,6 +7,7 @@ import {
   getProductAnchorId,
   PRODUCT_BROWSING_STORAGE_KEYS,
 } from "@/lib/product-browsing";
+import { getProductImageStyle } from "@/lib/product-image-config";
 import styles from "./ProductCard.module.css";
 
 export type ProductCardData = {
@@ -19,6 +20,7 @@ export type ProductCardData = {
 
 type ProductCardProps = {
   product: ProductCardData;
+  variant?: "default" | "featured";
   browsingState?: {
     category: ProductFilterId;
     visibleCount: number;
@@ -27,6 +29,7 @@ type ProductCardProps = {
 
 export default function ProductCard({
   product,
+  variant = "default",
   browsingState,
 }: ProductCardProps) {
   function rememberBrowsingState() {
@@ -59,7 +62,10 @@ export default function ProductCard({
   }
 
   return (
-    <article id={getProductAnchorId(product.slug)} className={styles.cardShell}>
+    <article
+      id={getProductAnchorId(product.slug)}
+      className={`${styles.cardShell} ${variant === "featured" ? styles.featuredCard : ""}`}
+    >
       <Link
         href={`/products/${product.slug}`}
         className={styles.card}
@@ -73,6 +79,7 @@ export default function ProductCard({
             width={720}
             height={540}
             className={styles.image}
+            style={getProductImageStyle(product.model, "list")}
             sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 50vw, (max-width: 1240px) 33vw, 25vw"
           />
         </div>

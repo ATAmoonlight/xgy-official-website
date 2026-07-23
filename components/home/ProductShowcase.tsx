@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "@/components/products/ProductCard";
 import { getProductCatalog } from "@/lib/product-markdown";
+import HomeSectionHeading from "./HomeSectionHeading";
 import styles from "./ProductShowcase.module.css";
 
 const FEATURED_PRODUCT_SLUGS = [
@@ -27,20 +28,19 @@ export default async function ProductShowcase() {
       aria-labelledby="products-title"
     >
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <span className={styles.label}>产品中心</span>
-          <h2 id="products-title" className={styles.title}>
-            代表设备展示
-          </h2>
-          <p className={styles.description}>
-            覆盖元器件成型、剪脚、穿管、组装、焊接及生产辅助设备等多个产品方向。
-          </p>
-        </header>
+        <HomeSectionHeading
+          eyebrow="产品中心"
+          title="代表设备展示"
+          titleId="products-title"
+          description="覆盖元器件成型、剪脚、穿管、组装、焊接及生产辅助设备等多个产品方向。"
+          className={styles.heading}
+        />
 
         <div className={styles.grid}>
           {featuredProducts.map((product) => (
             <ProductCard
               key={product.slug}
+              variant="featured"
               product={{
                 slug: product.slug,
                 model: product.model,

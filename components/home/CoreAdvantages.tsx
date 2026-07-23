@@ -1,3 +1,4 @@
+import HomeSectionHeading from "./HomeSectionHeading";
 import styles from "./CoreAdvantages.module.css";
 
 const ADVANTAGES = [
@@ -59,17 +60,24 @@ export default function CoreAdvantages() {
       aria-labelledby="advantages-title"
     >
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <span className={styles.label}>制造能力</span>
-          <h2 id="advantages-title" className={styles.title}>
-            为什么选择新光扬
-          </h2>
-        </header>
+        <HomeSectionHeading
+          eyebrow="核心优势"
+          title="为什么选择新光扬"
+          titleId="advantages-title"
+          align="center"
+          tone="inverse"
+          className={styles.heading}
+        />
 
         <div className={styles.grid}>
-          {ADVANTAGES.map((item) => (
+          {ADVANTAGES.map((item, index) => (
             <article key={item.title} className={styles.card}>
-              <div className={styles.icon}>{item.icon}</div>
+              <div className={styles.cardTop}>
+                <div className={styles.icon}>{item.icon}</div>
+                <span className={styles.index}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
               <h3 className={styles.cardTitle}>{item.title}</h3>
               <p className={styles.cardText}>{item.description}</p>
             </article>

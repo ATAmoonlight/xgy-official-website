@@ -44,12 +44,23 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: var(--product-image-position, center center);
+  transform: translate(
+      var(--product-image-translate-x, 0%),
+      var(--product-image-translate-y, 0%)
+    )
+    scale(var(--product-image-scale, 1));
+  transform-origin: center;
   transition: transform 0.22s ease;
 }
 
 .card:hover .image,
 .card:focus-visible .image {
-  transform: scale(1.02);
+  transform: translate(
+      var(--product-image-translate-x, 0%),
+      var(--product-image-translate-y, 0%)
+    )
+    scale(var(--product-image-hover-scale, 1.02));
 }
 
 .body {
@@ -87,6 +98,17 @@
   line-height: 1.55;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.featuredCard .name {
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
+  line-height: 1.45;
+}
+
+.featuredCard .category,
+.featuredCard .model,
+.featuredCard .more {
+  font-size: 0.875rem;
 }
 
 .more {

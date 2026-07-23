@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 
 const NAV_ITEMS = [
@@ -13,23 +13,42 @@ const NAV_ITEMS = [
   { label: "联系我们", href: "/#contact" },
 ] as const;
 
-export default function Navbar() {
+type NavbarProps = {
+  home?: boolean;
+};
+
+export default function Navbar({ home = false }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!home) {
+      return;
+    }
+
+    const updateScrolledState = () => setScrolled(window.scrollY > 24);
+    updateScrolledState();
+    window.addEventListener("scroll", updateScrolledState, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateScrolledState);
+  }, [home]);
 
   function closeMenu() {
     setMenuOpen(false);
   }
 
   return (
-    <header className={styles.header}>
-      <div className={styles.inner}>
+    <header
+      className={`${styles.header} ${home ? styles.homeHeader : ""} ${scrolled ? styles.homeScrolled : ""}`}
+    >
+      <div className={`${styles.inner} ${home ? styles.homeInner : ""}`}>
         <Link href="/" className={styles.logo} onClick={closeMenu}>
           <Image
             src="/logo/logo.png"
             alt="新光扬电子设备有限公司企业标志"
             width={200}
             height={100}
-            className={styles.logoImage}
+            className={`${styles.logoImage} ${home ? styles.homeLogoImage : ""}`}
             priority
           />
         </Link>
@@ -49,14 +68,14 @@ export default function Navbar() {
 
         <nav
           id="main-navigation"
-          className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}
+          className={`${styles.nav} ${home ? styles.homeNav : ""} ${menuOpen ? styles.navOpen : ""}`}
           aria-label="主导航"
         >
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={styles.navLink}
+              className={`${styles.navLink} ${home && item.href === "/" ? styles.navLinkActive : ""} ${home && item.label === "联系我们" ? styles.contactLink : ""}`}
               onClick={closeMenu}
             >
               {item.label}

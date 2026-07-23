@@ -1,24 +1,26 @@
+import { getCompanyIntroduction } from "@/lib/company-content";
+import HomeSectionHeading from "./HomeSectionHeading";
 import styles from "./CompanyIntro.module.css";
 
-export default function CompanyIntro() {
+export default async function CompanyIntro() {
+  const paragraphs = await getCompanyIntroduction();
+
   return (
     <section id="about" className={styles.section} aria-labelledby="about-title">
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <span className={styles.label}>关于新光扬</span>
-          <h2 id="about-title" className={styles.title}>
-            PCBA智能制造整体解决方案制造商
-          </h2>
-        </header>
+        <HomeSectionHeading
+          eyebrow="关于新光扬"
+          title="PCBA智能制造整体解决方案制造商"
+          titleId="about-title"
+          size="large"
+          className={styles.heading}
+        />
 
         <div className={styles.body}>
           <div className={styles.text}>
-            <p>
-              深圳市新光扬电子设备有限公司创立于2012年，总部位于深圳宝安福永，下设深圳、东莞两家工厂，是一家集研发、生产、销售、服务于一体的PCBA智能制造整体解决方案制造商。
-            </p>
-            <p>
-              公司专注于电子元器件成型、剪脚、穿管及装配自动化设备，持续配合客户的工艺需求改进设备，为客户节省人工、提高生产效率。
-            </p>
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
 
           <div className={styles.capabilities} aria-label="业务能力">

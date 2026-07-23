@@ -1,7 +1,11 @@
 import Image from "next/image";
+import { getCompanyStats } from "@/lib/company-content";
+import CompanyStats from "./CompanyStats";
 import styles from "./Hero.module.css";
 
-export default function Hero() {
+export default async function Hero() {
+  const stats = await getCompanyStats();
+
   return (
     <section id="home" className={styles.hero} aria-labelledby="hero-title">
       <Image
@@ -18,7 +22,14 @@ export default function Hero() {
           DIP元件成型 · 剪脚 · 穿管 · 装配自动化设备
         </span>
         <h1 id="hero-title" className={styles.title}>
-          专注电子元器件自动化设备研发与制造
+          <span className={styles.desktopTitle}>
+            <span>专注电子元器件自动化设备</span>
+            <span>研发与制造</span>
+          </span>
+          <span className={styles.mobileTitle}>
+            <span>专注电子元器件自动化</span>
+            <span>设备研发与制造</span>
+          </span>
         </h1>
         <p className={styles.subtitle}>
           新光扬专注于电子元器件成型、剪脚、穿管、装配及非标自动化设备，为电子制造企业提供稳定、高效的智能制造解决方案。
@@ -32,6 +43,7 @@ export default function Hero() {
           </a>
         </div>
       </div>
+      {stats.length ? <CompanyStats stats={stats} /> : null}
     </section>
   );
 }
